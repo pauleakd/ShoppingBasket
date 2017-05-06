@@ -19,6 +19,10 @@ public class Basket {
 	public int getItemCount(){
 		return items.size();
 	}
+	
+	public ArrayList<Item> getItems(){
+		return new ArrayList<Item>(items);
+	}
 
 	public void addItem(Item item) {
 		items.add(item);
@@ -30,6 +34,15 @@ public class Basket {
 	
 	public void empty(){
 		items.clear();
+	}
+
+	public void updateItemQuantity(Item item, int newQuantity) {
+		for(Item existingItem : items){
+			if(existingItem == item){
+				existingItem.setQuantity(newQuantity);
+			}
+		}
+		
 	}
 	
 	

@@ -28,5 +28,24 @@ public class TestBasket {
 		basket.empty();
 		assertEquals(0, basket.getItemCount());
 	}
+	
+	@Test 
+	public void testUpdateItemQuantity(){
+		basket.addItem(item1);
+		assertEquals(1, basket.getItemCount());
+		basket.updateItemQuantity(item1, 2);
+		assertEquals(2, basket.getItems().get(0).getQuantity());
+	}
+	
+//	@Test
+//	
+//	public void testAddingSameItemIncreasesQuantity(){
+//		basket.addItem(item1);
+//		basket.addItem(item1);
+//		assertEquals(1, basket.getItemCount());
+//		basket.updateItemQuantity(item1, 1);
+//		assertEquals(1, basket.getItemCount());
+//		
+//	}
 
 }
