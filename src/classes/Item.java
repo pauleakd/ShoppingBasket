@@ -47,23 +47,22 @@ public class Item {
 	}
 	
 	private void setFinalPrice(int price) {
-		this.itemPrice = price;
+		this.finalPrice = price;
 	}
 	
-//	private void calculateFinalPrice(){
-//		if( status2for1==false) {
-//			int result = quantity * itemPrice;
-//			setFinalPrice(result);
-//		}
-//		else if (status2for1 == true ){
-//			if (quantity/2 == 0){
-//				TODO
-//			}
-//		}
-//	}
+	private void calculateFinalPrice(){
+		if( status2for1 == false || quantity == 1) {
+			int result = quantity * itemPrice;
+			setFinalPrice(result);
+		}
+		else if (status2for1 == true && quantity > 1 ){
+				int price = ((quantity / 2) + (quantity % 2)) * itemPrice;
+					setFinalPrice(price);
+		}
+	}
 	
 	public int getFinalPrice(){
-//		calculateFinalPrice();
+		calculateFinalPrice();
 		return this.finalPrice;
 	}
 }
