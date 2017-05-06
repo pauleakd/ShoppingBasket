@@ -10,6 +10,7 @@ public class TestBasket {
 	Item item2;
 	Item item3;
 	Basket basket;
+	
 	@Before
 	public void before(){
 		item1 = new Item("Shoes", 4);
@@ -23,7 +24,7 @@ public class TestBasket {
 		basket.addItem(item1);
 		basket.addItem(item2);
 		assertEquals(2, basket.getItemCount());
-		basket.removeItem(item2);
+		basket.removeItemFully(item2);
 		assertEquals(1, basket.getItemCount());
 		basket.empty();
 		assertEquals(0, basket.getItemCount());
@@ -37,15 +38,23 @@ public class TestBasket {
 		assertEquals(2, basket.getItems().get(0).getQuantity());
 	}
 	
-//	@Test
-//	
-//	public void testAddingSameItemIncreasesQuantity(){
-//		basket.addItem(item1);
-//		basket.addItem(item1);
-//		assertEquals(1, basket.getItemCount());
-//		basket.updateItemQuantity(item1, 1);
-//		assertEquals(1, basket.getItemCount());
-//		
-//	}
+	@Test
+	
+	public void testAddingSameItemDoesNotIncreaseItemCount(){
+		basket.addItem(item1);
+		assertEquals(1, basket.getItemCount());
+		basket.addItem(item1);
+		assertEquals(1, basket.getItemCount());
+		basket.addItem(item2);
+		assertEquals(2, basket.getItemCount());
+		
+	}
+	
+	@Test 
+	public void testAddingSameItemIncreasesQuantityOfItem(){
+		basket.addItem(item3);
+		basket.addItem(item3);
+		assertEquals(6, basket.getItems().get(0).getQuantity());
+	}
 
 }

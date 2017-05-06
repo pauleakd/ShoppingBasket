@@ -25,10 +25,13 @@ public class Basket {
 	}
 
 	public void addItem(Item item) {
-		items.add(item);
+		if(items.contains(item)){
+			updateItemQuantity(item, item.getQuantity() * 2);
+		}
+		else items.add(item);
 	}
 	
-	public void removeItem(Item item){
+	public void removeItemFully(Item item){
 		items.remove(item);
 	}
 	

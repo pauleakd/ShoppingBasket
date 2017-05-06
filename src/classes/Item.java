@@ -38,6 +38,10 @@ public class Item {
 		this.quantity = quantity;
 	}
 	
+	public void addToQuantity(int quantity){
+		this.quantity += quantity;
+	}
+	
 	public void add2for1Discount(){
 		status2for1 = true;
 	}
