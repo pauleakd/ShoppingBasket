@@ -26,7 +26,6 @@ public class TestItem {
 	}
 	
 	@Test 
-	
 	public void testFinalPriceCalculation(){
 		assertEquals(4, item1.getFinalPrice());
 		assertEquals(20, item2.getFinalPrice());
