@@ -33,5 +33,13 @@ public class TestBasket {
 		basket.empty();
 		assertEquals(0, basket.getStackCount());
 	}
+	
+	@Test 
+	
+	public void testStacksPriceCalculation(){
+		basket.addStack(stack1);
+		basket.addStack(stack2);
+		assertEquals(18, basket.getStacksPrices());
+	}
 
 } 

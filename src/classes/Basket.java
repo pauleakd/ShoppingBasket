@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Basket {
 	private ArrayList<ItemStack> stacks;
 	private boolean loyaltyCardStatus;
+	private int stacksPrice;
 	
 	public Basket(boolean status){
 		loyaltyCardStatus = status;
@@ -36,5 +37,21 @@ public class Basket {
 		stacks.clear();
 	}
 	
+	private void setStacksPrice(int newPrice){
+		this.stacksPrice = newPrice;
+	}
+	
+	public void calculateStackPrice(){
+		int stacksPrice = 0;
+		for(ItemStack stack :stacks){
+			stacksPrice += stack.getStackPrice();
+		}
+		setStacksPrice(stacksPrice);
+	}
+	
+	public int getStacksPrices(){
+		calculateStackPrice();
+		return this.stacksPrice;
+	}
 	
 }
