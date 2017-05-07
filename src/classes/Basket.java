@@ -6,6 +6,8 @@ public class Basket {
 	private ArrayList<ItemStack> stacks;
 	private boolean loyaltyCardStatus;
 	private int stacksPrice;
+	private ArrayList<Calculatorable> discountCalculators;
+	private double finalPrice;
 	
 	public Basket(boolean status){
 		loyaltyCardStatus = status;
@@ -15,6 +17,13 @@ public class Basket {
 	public Basket(){
 		loyaltyCardStatus = false;
 		stacks = new ArrayList<ItemStack>(); 
+		this.discountCalculators = new ArrayList<Calculatorable>();
+	}
+	
+	public Basket(ArrayList<Calculatorable> discountCalculators){
+		loyaltyCardStatus = false;
+		stacks = new ArrayList<ItemStack>(); 
+		this.discountCalculators = discountCalculators;
 	}
 	
 	public int getStackCount(){
@@ -64,6 +73,25 @@ public class Basket {
 	
 	public void removeLoyaltyCard(){
 		this.loyaltyCardStatus = false;
+	}
+	
+	public void ApplyAllDiscounts(){
+		double priceAfterDiscount = getStacksPrices();
+		for(Calculatorable calculator : discountCalculators) {
+			double newPrice = calculator.ApplyDiscount(this, priceAfterDiscount);
+			priceAfterDiscount = newPrice;
+		}
+		
+		finalPrice = priceAfterDiscount;
+	}
+	
+	public double getFinalPrice(){
+		ApplyAllDiscounts();
+		return finalPrice;
+	}
+	
+	public void addCalculator(Calculatorable calculator){
+		discountCalculators.add(calculator);
 	}
 	
 }

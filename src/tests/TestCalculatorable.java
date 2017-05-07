@@ -42,6 +42,9 @@ public class TestCalculatorable {
 			basket.addLoyaltyCard();
 			double discountedPrice = loyaltycalculator.ApplyDiscount(basket, basket.getStacksPrices());
 			assertEquals(7.84, discountedPrice, 0.01);
+			basket.removeLoyaltyCard();
+			double discountedPrice2 = loyaltycalculator.ApplyDiscount(basket, basket.getStacksPrices());
+			assertEquals(8.0, discountedPrice2, 0.01);
 		}
 		
 		@Test 
@@ -52,6 +55,9 @@ public class TestCalculatorable {
 			basket.addStack(stack2);
 			double discountedPrice = percentOffGreaterThanCalculator.ApplyDiscount(basket, basket.getStacksPrices());
 			assertEquals(25.2, discountedPrice, 0.01);
+			basket.removeItemStack(stack2);
+			double discountedPrice2 = percentOffGreaterThanCalculator.ApplyDiscount(basket, basket.getStacksPrices());
+			assertEquals(18.0, discountedPrice2, 0.01);
 		}
 	}
 
