@@ -55,7 +55,6 @@ public class Basket {
 	}
 
 	public boolean getLoyaltyCardStatus() {
-		
 		return loyaltyCardStatus;
 	}
 	

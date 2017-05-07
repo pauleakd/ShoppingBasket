@@ -1,5 +1,5 @@
 package classes;
 
 public interface Calculatorable {
-	public double ApplyDiscount(Basket basket);
+	public double ApplyDiscount(Basket basket, double currentPrice);
 }

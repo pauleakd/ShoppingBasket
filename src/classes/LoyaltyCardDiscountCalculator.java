@@ -10,12 +10,12 @@ public class LoyaltyCardDiscountCalculator implements Calculatorable {
 		amount = percentDiscount;
 	}
 	@Override
-	public double ApplyDiscount(Basket basket) {
+	public double ApplyDiscount(Basket basket, double currentPrice) {
 		if (basket.getLoyaltyCardStatus() == true){
-			double amountAfterDiscount = basket.getStacksPrices() - (basket.getStacksPrices() * amount);
+			double amountAfterDiscount = currentPrice - (currentPrice * amount);
 			return amountAfterDiscount;
 		}
-		else return basket.getStacksPrices();
+		else return currentPrice;
 	}
 
 }

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import classes.Basket;
 import classes.Calculatorable;
+import classes.DiscountPercentOffWhenGreaterThan;
 import classes.Item;
 import classes.ItemStack;
 import classes.LoyaltyCardDiscountCalculator;
@@ -21,6 +22,7 @@ public class TestCalculatorable {
 		ItemStack stack2;
 		Basket basket;
 		Calculatorable loyaltycalculator;
+		private DiscountPercentOffWhenGreaterThan percentOffGreaterThanCalculator;
 		
 		@Before
 		public void Before(){
@@ -31,14 +33,25 @@ public class TestCalculatorable {
 			stack2 = new ItemStack(item2, 1);
 			basket = new Basket();
 			loyaltycalculator = new LoyaltyCardDiscountCalculator(0.02);
+			percentOffGreaterThanCalculator = new DiscountPercentOffWhenGreaterThan(0.1, 20);
 		}
 		
 		@Test 
 		public void TestLoyaltyCard(){
 			basket.addStack(stack1);
 			basket.addLoyaltyCard();
-			double discountedPrice = loyaltycalculator.ApplyDiscount(basket);
+			double discountedPrice = loyaltycalculator.ApplyDiscount(basket, basket.getStacksPrices());
 			assertEquals(7.84, discountedPrice, 0.01);
+		}
+		
+		@Test 
+		
+		public void TestPercentOffCalculatorTrue(){
+			basket.addStack(stack1);
+			basket.addStack(stack2);
+			basket.addStack(stack2);
+			double discountedPrice = percentOffGreaterThanCalculator.ApplyDiscount(basket, basket.getStacksPrices());
+			assertEquals(25.2, discountedPrice, 0.01);
 		}
 	}
 
