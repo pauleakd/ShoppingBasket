@@ -14,8 +14,8 @@ public class TestBasket {
 	@Before
 	public void before(){
 		item1 = new Item("Shoes", 4);
-		item2 = new Item("Glasses", 10, 2);
-		item3 = new Item("Glasses", 10, 3);
+		item2 = new Item("Glasses", 10);
+		item3 = new Item("Glasses", 10);
 		basket = new Basket();
 	}
 
@@ -47,14 +47,14 @@ public class TestBasket {
 		assertEquals(1, basket.getItemCount());
 		basket.addItem(item2);
 		assertEquals(2, basket.getItemCount());
-		
 	}
 	
 	@Test 
 	public void testAddingSameItemIncreasesQuantityOfItem(){
-		basket.addItem(item3);
-		basket.addItem(item3);
-		assertEquals(6, basket.getItems().get(0).getQuantity());
+	}
+	
+	@Test 
+	public void testAddingSameItemIncreasesQuantityOfItem2(){
 	}
 
-}
+} 
