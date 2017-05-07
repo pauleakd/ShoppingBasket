@@ -1,5 +1,7 @@
 package classes;
 
+import java.math.BigDecimal;
+
 public class Item implements Sellable {
 	
 	protected int price;
@@ -45,6 +47,4 @@ public class Item implements Sellable {
 	public boolean getStatus2for1(){
 		return status2for1;
 	}
-	
-	
 }

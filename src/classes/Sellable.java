@@ -1,5 +1,7 @@
 package classes;
 
+import java.math.BigDecimal;
+
 public interface Sellable {
 	
 	public int getPrice();

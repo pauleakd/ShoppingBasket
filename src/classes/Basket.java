@@ -53,5 +53,18 @@ public class Basket {
 		calculateStackPrice();
 		return this.stacksPrice;
 	}
+
+	public boolean getLoyaltyCardStatus() {
+		
+		return loyaltyCardStatus;
+	}
+	
+	public void addLoyaltyCard(){
+		this.loyaltyCardStatus = true;
+	}
+	
+	public void removeLoyaltyCard(){
+		this.loyaltyCardStatus = false;
+	}
 	
 }
